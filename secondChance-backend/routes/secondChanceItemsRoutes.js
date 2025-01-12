@@ -31,8 +31,6 @@ router.get('/', async (req, res, next) => {
         //Step 2: task 4 - insert code here
         const db = await connectToDatabase();
         const collection = db.collection("secondChanceItems");
-        const collections = await db.listCollections().toArray();
-        console.log('Collections in the database:', collections.map(c => c.name));
         const secondChanceItems = await collection.find().toArray();
         console.log("secondChanceItems", secondChanceItems)
         res.json(secondChanceItems);
