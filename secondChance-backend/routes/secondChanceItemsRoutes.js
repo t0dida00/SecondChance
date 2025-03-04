@@ -44,11 +44,6 @@ router.get('/', async (req, res, next) => {
 router.post('/', upload.single('file'), async (req, res, next) => {
     try {
 
-        //Step 3: task 1 - insert code here
-        //Step 3: task 2 - insert code here
-        //Step 3: task 3 - insert code here
-        //Step 3: task 4 - insert code here
-        //Step 3: task 5 - insert code here
         const db = await connectToDatabase();
         const collection = db.collection("secondChanceItems");
         let secondChanceItem = req.body;
@@ -60,8 +55,8 @@ router.post('/', upload.single('file'), async (req, res, next) => {
         secondChanceItem.date_added = date_added
 
         secondChanceItem = await collection.insertOne(secondChanceItem);
-
-        res.status(201).json(secondChanceItem.ops[0]);
+        console.log(secondChanceItem)
+        res.status(201).json(secondChanceItem);
     } catch (e) {
         next(e);
     }
@@ -70,10 +65,7 @@ router.post('/', upload.single('file'), async (req, res, next) => {
 // Get a single secondChanceItem by ID
 router.get('/:id', async (req, res, next) => {
     try {
-        //Step 4: task 1 - insert code here
-        //Step 4: task 2 - insert code here
-        //Step 4: task 3 - insert code here
-        //Step 4: task 4 - insert code here
+
         const id = req.params.id;
         const db = await connectToDatabase();
         const collection = db.collection("secondChanceItems");
@@ -131,10 +123,6 @@ router.delete('/:id', async (req, res, next) => {
             logger.error('secondChanceItem not found');
             return res.status(404).json({ error: "secondChanceItem not found" });
         }
-        //Step 6: task 1 - insert code here
-        //Step 6: task 2 - insert code here
-        //Step 6: task 3 - insert code here
-        //Step 6: task 4 - insert code here
 
         2
         await collection.deleteOne({ id });
